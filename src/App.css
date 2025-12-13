@@ -1,38 +1,69 @@
-.App {
-  text-align: center;
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  font-family: Arial, sans-serif;
+  background: #fafafa;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+/* Main container */
+.app-container {
+  display: block;
   min-height: 100vh;
+}
+
+/* Middle content (old layout – not used now but safe to keep) */
+.middle-content {
+  margin-left: 240px;
+  padding: 20px;
+  min-height: 100vh;
+  overflow-y: auto;
+}
+
+/* Right sidebar (fallback) */
+.right-sidebar {
+  width: 300px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  background: #fff;
+  border-left: 1px solid #ddd;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+/* Suggestions inside right sidebar */
+.suggestion-item {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 10px;
+  margin-top: 10px;
 }
 
-.App-link {
-  color: #61dafb;
+.suggestion-item img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Responsive Designs */
+@media (max-width: 1024px) {
+  .right-sidebar {
+    display: none;
   }
-  to {
-    transform: rotate(360deg);
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    width: 200px;
+  }
+
+  .middle-content {
+    margin-left: 200px;
   }
 }
