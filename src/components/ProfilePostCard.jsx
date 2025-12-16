@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./ProfilePostCard.css";
+import "./profilePostCard.css";
 
 export default function ProfilePostCard({ post }) {
   const [liked, setLiked] = useState(false);

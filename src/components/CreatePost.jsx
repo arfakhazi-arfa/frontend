@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./CreatePost.css";
+import "./createPost.css";
 
 const CreatePost = ({ onPost, user }) => {
   const [caption, setCaption] = useState("");

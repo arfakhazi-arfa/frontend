@@ -1,45 +1,63 @@
 import React, { useState } from "react";
-import "./Login.css";
-
+import "./login.css";
 import phoneMock from "../assets/images/img1.png";
 import instaLogo from "../assets/images/instagramLogo.png";
+import { API, api } from "../api";
 
-export default function Login({ onLogin, goToRegister, goToForgot }) {
-  const [username, setUsername] = useState("");
+export default function Login({ onLogin }) {
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!username.trim() || !password.trim()) {
-      alert("Please enter username & password");
+
+    if (!email || !password) {
+      alert("Please enter email and password");
       return;
     }
 
     setLoading(true);
-    setTimeout(() => {
-      onLogin(username);
+
+    try {
+      const res = await API.post(api.Auth.login, {
+        email: email,
+        password: password
+      });
+      
+      const data = res.data;
+
+      if (!data.status) {
+        alert(data.message);
+      } else {
+        localStorage.setItem("user", JSON.stringify(data.user));
+        alert(data.message);
+        onLogin(data.user.username);
+      }
+    } catch (err) {
+      console.error("Login error:", err);
+      alert("Server error. Please try again later.");
+    } finally {
       setLoading(false);
-    }, 800);
+    }
   };
 
   return (
     <div className="login-wrapper">
-      {/* LEFT IMAGE */}
       <div className="left-side">
-        <img src={phoneMock} className="phone-img" alt="Instagram Preview" />
+        <img src={phoneMock} alt="Instagram Preview" className="phone-img" />
       </div>
 
-      {/* RIGHT FORM */}
       <div className="right-side">
         <div className="login-box">
           <img src={instaLogo} alt="Instagram" className="insta-logo" />
+
           <form onSubmit={handleSubmit} className="login-form">
             <input
               type="text"
-              placeholder="Phone number, username, or email"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
             <input
               type="password"
@@ -52,20 +70,16 @@ export default function Login({ onLogin, goToRegister, goToForgot }) {
             </button>
           </form>
 
-          <button className="forgot-btn" type="button" onClick={goToForgot}>
-            Forgot Password?
-          </button>
-
           <div className="divider">
             <span></span> OR <span></span>
           </div>
         </div>
 
         <div className="signup-box">
-          Don’t have an account?
-          <button className="signup-btn" onClick={goToRegister}>
+          Don’t have an account?{" "}
+          <a href="/register" className="signup-btn">
             Sign Up
-          </button>
+          </a>
         </div>
       </div>
     </div>

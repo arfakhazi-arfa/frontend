@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Stories.css";
+import "./stories.css";
 
 // Import avatars
 import currentUserAvatar from "../assets/images/profile.png";

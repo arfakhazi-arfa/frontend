@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import instagramLogo from "../assets/images/instagramLogo.png";
-import "./Navbar.css";
+import "./navBar.css";
 
 const navItems = [
   { icon: "🏠", text: "Home", path: "/" },

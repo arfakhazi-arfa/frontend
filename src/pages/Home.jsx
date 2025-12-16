@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import Stories from "../components/Stories";
-import PostCard from "../components/PostCard";
-import "./Home.css";
+import Stories from "../components/stories";
+import PostCard from "../components/postCard";
+import "./home.css";
+
 
 // Images
 import profileImg from "../assets/images/profile.png";
@@ -28,9 +29,9 @@ const homePosts = [
     username: "arfa7795",
     location: "Bangalore",
     image: post1,
-    caption: "Fun day ❤️",
+    caption: "Fun day ",
     likes: 340,
-    comments: ["Nice!", "Cool 🔥"],
+    comments: ["Nice!", "Cool "],
   },
   {
     id: 2,
@@ -38,7 +39,7 @@ const homePosts = [
     username: "sarah",
     location: "Delhi",
     image: post2,
-    caption: "Happy vibes ✨",
+    caption: "Happy vibes ",
     likes: 210,
     comments: [],
   },
@@ -48,9 +49,9 @@ const homePosts = [
     username: "arham",
     location: "Mumbai",
     image: post3,
-    caption: "Bliss❤️",
+    caption: "Bliss",
     likes: 500,
-    comments: ["Amazing 😍"],
+    comments: ["Amazing "],
   },
   {
     id: 4,

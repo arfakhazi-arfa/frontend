@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import "./UploadPost.css";
+import "./uploadPost.css";
 
 const demoImages = [
   "../images/Post1.jpg",

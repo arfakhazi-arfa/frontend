@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import "./Profile.css";
-import ProfilePostCard from "../components/ProfilePostCard";
+import "./profile.css";
+import ProfilePostCard from "../components/profilePostCard";
 
 // Common posts
 import profileImg from "../assets/images/profile.png";
